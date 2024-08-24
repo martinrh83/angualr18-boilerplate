@@ -6,6 +6,8 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { demoInterceptor } from './core/interceptors/demo.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +19,6 @@ export const appConfig: ApplicationConfig = {
         paramsInheritanceStrategy: 'always',
       })
     ),
+    provideHttpClient(withInterceptors([demoInterceptor])),
   ],
 };
